@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useCallback } from "react";
+import Globe from "./Globe";
+import PlaneDetails from "./PlaneDetails";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const [selectedPlane, setSelectedPlane] = useState(null);
+
+    const handleSelectPlane = useCallback((plane) => {
+        setSelectedPlane(plane);
+    }, []);
+
+    const handleClose = useCallback(() => {
+        setSelectedPlane(null);
+    }, []);
+
+    return (
+        <div className="app">
+            <Globe setSelectedPlane={handleSelectPlane} />
+            {/* PlaneDetails is always in DOM — shows/hides via CSS right: property */}
+            <PlaneDetails plane={selectedPlane} onClose={handleClose} />
+        </div>
+    );
 }
-
-export default App;
