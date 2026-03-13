@@ -108,8 +108,7 @@ function BandMesh({ band, planeList, lookupRef, onPlaneClick }) {
         alphaTest: 0.05,
         side: THREE.DoubleSide,
         // NO vertexColors — color is baked into the texture
-    }), [band]);
-
+    }), [band]);   
     useEffect(() => {
         const mesh = meshRef.current;
         if (!mesh) return;
