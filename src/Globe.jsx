@@ -282,7 +282,7 @@ function CameraController() {
         window.addEventListener("touchend", onUp);
         el.addEventListener("wheel", onWheel, { passive: true });
 
-        const _lastErr = null;
+        
 
         return () => {
             el.removeEventListener("mousedown", onDown);
